@@ -5,113 +5,219 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Radhika Mangroliya</title>
   <style>
-    :root{--bg:#0f172a;--card:#111827;--text:#e5e7eb;--muted:#94a3b8;--accent:#38bdf8}
-    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    .wrap{max-width:980px;margin:0 auto;padding:28px}
-    header{display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;margin:8px 0 22px}
-    .name{font-weight:700;font-size:1.6rem} .links a{color:var(--muted);text-decoration:none;margin-left:14px}
+    :root{
+      --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#475569; --accent:#7c3aed;
+      --line:#e5e7eb; --chip:#eef2ff; --chiptext:#4338ca
+    }
+    [data-theme="dark"]{
+      --bg:#0b1020; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --accent:#8b5cf6;
+      --line:#1f2937; --chip:#1e1b4b; --chiptext:#a78bfa
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    /* nav */
+    .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.6);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line)}
+    [data-theme="dark"] .nav{background:rgba(10,12,22,.6)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+    .brand{font-weight:700}
+    .links a{margin-left:16px;text-decoration:none;color:var(--muted)}
     .links a:hover{color:var(--accent)}
-    .hero{padding:24px;border:1px solid #1f2937;border-radius:16px;background:linear-gradient(180deg,#0b1227,transparent)}
-    .hero h1{margin:.2em 0 0;font-size:2rem}
-    .hero p{margin:.4em 0;color:var(--muted)}
-    .btns a{display:inline-block;margin-right:10px;padding:10px 14px;border-radius:10px;text-decoration:none;border:1px solid #223049;color:var(--text)}
-    .btns a.primary{background:var(--accent);color:#06202a;border-color:transparent}
-    h2{margin:28px 0 10px;font-size:1.2rem;color:#cbd5e1}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:620px){.grid{grid-template-columns:1fr}}
-    .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:16px}
-    .card h3{margin:0 0 6px;font-size:1rem}
-    .tag{display:inline-block;font-size:.75rem;color:#9ca3af;border:1px solid #334155;border-radius:999px;padding:2px 8px;margin:4px 6px 8px 0}
-    ul{padding-left:18px;margin:8px 0 0} li{margin:4px 0;color:#cbd5e1}
-    footer{margin:26px 0 0;color:#64748b;font-size:.9rem}
+    .toggle{border:1px solid var(--line);padding:6px 10px;border-radius:10px;background:transparent;color:var(--muted);cursor:pointer}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;margin-top:26px}
+    .hero h1{font-size:2.4rem;margin:.2em 0}
+    .hero p{color:var(--muted);max-width:52ch}
+    .social{display:flex;flex-direction:column;gap:14px;position:absolute;left:16px;top:40%}
+    .soc{width:36px;height:36px;border:1px solid var(--line);display:grid;place-items:center;border-radius:10px;color:var(--muted);text-decoration:none}
+    .soc:hover{color:var(--accent);border-color:var(--accent)}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .btns a{display:inline-block;margin-right:10px;padding:10px 14px;border-radius:10px;text-decoration:none;border:1px solid var(--line);color:var(--text)}
+    .btns .primary{background:var(--accent);color:#fff;border-color:transparent}
+
+    /* sections */
+    section{margin:38px 0}
+    h2{margin:0 0 12px}
+    .sub{color:var(--muted);margin-top:-4px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.social{display:none}}
+    @media (max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+    .chip{display:inline-block;background:var(--chip);color:var(--chiptext);border-radius:999px;padding:4px 10px;margin:4px 6px 0 0;font-size:.78rem}
+    ul{margin:8px 0 0 18px}
+    footer{margin:36px 0 8px;color:var(--muted);text-align:center;font-size:.95rem}
+    .img{width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="name">Radhika Mangroliya</div>
+  <nav class="nav">
+    <div class="nav-inner wrap">
+      <div class="brand">Radhika Mangroliya</div>
       <div class="links">
-        <a href="mailto:radhikamangroliya0@gmail.com">Email</a>
-        <a href="https://linkedin.com/in/YOUR-LINK">LinkedIn</a>
-        <a href="https://github.com/radhikamangroliya">GitHub</a>
-        <a href="assets/resume.pdf">Resume</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#qualifications">Qualifications</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <button class="toggle" id="themeBtn">🌓</button>
       </div>
-    </header>
+    </div>
+  </nav>
 
-    <section class="hero">
-      <h1>Data Science • Machine Learning • Cloud</h1>
-      <p>CS grad student @ DePaul. Python, SQL, ML (TensorFlow/PyTorch/Sklearn), dashboards (Power BI/Tableau), and cloud (AWS/GCP). Built ML pipelines, real-time analytics, and production deployments.</p>
-      <div class="btns">
-        <a class="primary" href="#projects">View Projects</a>
-        <a href="assets/resume.pdf">Download Resume</a>
+  <!-- social rail -->
+  <div class="social">
+    <a class="soc" href="https://www.linkedin.com/in/radhika-mangroliya-87aa75214" title="LinkedIn">in</a>
+    <a class="soc" href="https://github.com/radhikamangroliya" title="GitHub">GH</a>
+    <a class="soc" href="mailto:radhikamangroliya0@gmail.com" title="Email">@</a>
+  </div>
+
+  <main class="wrap">
+    <!-- HOME -->
+    <section id="home" class="hero">
+      <div>
+        <div class="panel">
+          <h1>Hi, I’m Radhika</h1>
+          <div class="sub">Data Science • Machine Learning • Cloud</div>
+          <p>CS grad student @ DePaul. Python, SQL, TensorFlow/PyTorch/Scikit-learn, dashboards (Power BI/Tableau), and cloud (AWS/GCP). Built ML pipelines, real-time analytics, and production deployments.</p>
+          <div class="btns">
+            <a class="primary" href="#portfolio">View Projects</a>
+            <a href="assets/resume.pdf" target="_blank">Download Resume</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <img class="img" src="assets/profile.jpg" alt="Radhika profile">
       </div>
     </section>
 
-    <h2 id="projects">Selected Projects</h2>
-    <div class="grid">
-
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p class="sub">My introduction</p>
       <div class="card">
-        <h3>Hybrid Android Malware Detection</h3>
-        <div>
-          <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">SVM</span><span class="tag">AWS EC2/S3</span>
-        </div>
-        <ul>
-          <li>92% accuracy on 10k+ APKs across 5 malware families.</li>
-          <li>Deployed real-time classification pipeline on AWS EC2/S3.</li>
-        </ul>
+        Computer Science graduate student at DePaul University with internship experience in Python, Data Science, and ML. Skilled in predictive modeling, data visualization, and cloud-based model integration on AWS and GCP. Seeking internship or entry-level roles in Python development, Data Science, or ML.
       </div>
+    </section>
 
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <p class="sub">My technical level</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Languages</h3>
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">C</span><span class="chip">Java</span>
+        </div>
+        <div class="card">
+          <h3>ML / AI</h3>
+          <span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">Scikit-learn</span>
+          <span class="chip">XGBoost</span><span class="chip">SVM</span><span class="chip">NLP</span><span class="chip">GenAI</span>
+        </div>
+        <div class="card">
+          <h3>Cloud & Data</h3>
+          <span class="chip">AWS (EC2/S3/Lambda/SageMaker)</span>
+          <span class="chip">GCP (BigQuery/Vertex AI)</span>
+          <span class="chip">Azure ML</span>
+          <span class="chip">Hadoop/Spark/Kafka</span>
+          <span class="chip">Power BI</span><span class="chip">Tableau</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUALIFICATIONS -->
+    <section id="qualifications">
+      <h2>Qualifications</h2>
+      <p class="sub">Education & Experience</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Education</h3>
+          <ul>
+            <li><b>DePaul University</b> — MS Computer Science (Dec 2023 – Nov 2025), GPA 3.5/4</li>
+            <li><b>Gujarat Technological University</b> — BE Information Technology (Jun 2018 – Jun 2022), GPA 3.8/4</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Experience</h3>
+          <ul>
+            <li><b>Data Science Intern, Cerebulb</b> — 10+ Python/SQL pipelines; −30% reporting errors; 15 hrs/wk saved.</li>
+            <li>Dashboards + predictive models on AWS/GCP; decision cycle 3 days → 1.</li>
+            <li>Failure detection + VAR forecasting; +45% uptime; −15% error.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <p class="sub">Selected projects</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Hybrid Android Malware Detection</h3>
+          <span class="chip">Python</span><span class="chip">XGBoost</span><span class="chip">SVM</span><span class="chip">AWS</span>
+          <ul>
+            <li>92% accuracy on 10k+ APKs across 5 families.</li>
+            <li>Deployed real-time pipeline on EC2/S3.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>WSN Intrusion Detection</h3>
+          <span class="chip">XGBoost</span><span class="chip">Random Forest</span><span class="chip">Sklearn</span>
+          <ul>
+            <li>99% detection accuracy; −18% false positives.</li>
+            <li>ROC/heatmaps; +22% precision/recall via tuning.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Crypto Trend Analysis</h3>
+          <span class="chip">Hadoop</span><span class="chip">Spark</span><span class="chip">Kafka</span><span class="chip">Power BI</span>
+          <ul>
+            <li>Real-time & batch pipelines; +40% processing efficiency.</li>
+            <li>Dashboards; +35% faster reporting; privacy controls.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Billionaires’ Wealth Analysis</h3>
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span>
+          <ul>
+            <li>2,500+ records; 10+ dashboards; 40% faster reporting.</li>
+            <li>Led 4-member team; 100% ETL consistency.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="sub">Let’s talk</p>
       <div class="card">
-        <h3>WSN Intrusion Detection</h3>
-        <div>
-          <span class="tag">XGBoost</span><span class="tag">Random Forest</span><span class="tag">Sklearn</span>
-        </div>
-        <ul>
-          <li>99% detection accuracy; −18% false positives vs. baseline.</li>
-          <li>ROC/heatmaps; +22% precision/recall via tuning.</li>
-        </ul>
+        <p>📧 <a href="mailto:radhikamangroliya0@gmail.com">radhikamangroliya0@gmail.com</a></p>
+        <p>🔗 <a href="https://linkedin.com/in/YOUR-LINK">LinkedIn</a> • <a href="https://github.com/radhikamangroliya">GitHub</a> • <a href="assets/resume.pdf" target="_blank">Resume</a></p>
       </div>
+    </section>
+  </main>
 
-      <div class="card">
-        <h3>Crypto Trend Analysis</h3>
-        <div>
-          <span class="tag">Hadoop</span><span class="tag">Spark</span><span class="tag">Kafka</span><span class="tag">Power BI</span>
-        </div>
-        <ul>
-          <li>Real-time & batch pipelines; +40% processing efficiency.</li>
-          <li>Dashboards; +35% faster reporting; privacy controls (K/L-diversity).</li>
-        </ul>
-      </div>
+  <footer>© <span id="y"></span> Radhika Mangroliya • Chicago, IL</footer>
 
-      <div class="card">
-        <h3>Billionaires Wealth Analysis</h3>
-        <div>
-          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span>
-        </div>
-        <ul>
-          <li>2,500+ records analyzed; 10+ interactive dashboards.</li>
-          <li>Led 4-person team; 100% ETL consistency.</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <h2>Experience</h2>
-    <div class="card">
-      <h3>Data Science Intern — Cerebulb</h3>
-      <ul>
-        <li>10+ Python/SQL pipelines; −30% reporting errors; 15 hrs/week saved.</li>
-        <li>Dashboards + predictive models on AWS/GCP; decisions 3 days → 1.</li>
-        <li>Failure detection + VAR forecasting; +45% uptime; −15% error.</li>
-      </ul>
-    </div>
-
-    <footer>
-      © <span id="y"></span> Radhika Mangroliya • Chicago, IL
-    </footer>
-  </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>
+    // year + theme toggle
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('themeBtn');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved==='dark'){ root.setAttribute('data-theme','dark'); }
+    btn.onclick = () => {
+      const isDark = root.getAttribute('data-theme')==='dark';
+      if(isDark){ root.removeAttribute('data-theme'); localStorage.setItem('theme','light'); }
+      else{ root.setAttribute('data-theme','dark'); localStorage.setItem('theme','dark'); }
+    };
+  </script>
 </body>
 </html>
+
 
