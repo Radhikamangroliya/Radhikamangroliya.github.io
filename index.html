@@ -1,84 +1,117 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Radhika Mangroliya</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #fdfdfd; color: #333; line-height: 1.6; }
-    h1, h2 { color: #2c3e50; }
-    h1 { font-size: 2.5em; margin-bottom: 0; }
-    h2 { margin-top: 40px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
-    p, li { font-size: 1em; }
-    a { color: #2980b9; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul { margin-left: 20px; }
+    :root{--bg:#0f172a;--card:#111827;--text:#e5e7eb;--muted:#94a3b8;--accent:#38bdf8}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .wrap{max-width:980px;margin:0 auto;padding:28px}
+    header{display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;margin:8px 0 22px}
+    .name{font-weight:700;font-size:1.6rem} .links a{color:var(--muted);text-decoration:none;margin-left:14px}
+    .links a:hover{color:var(--accent)}
+    .hero{padding:24px;border:1px solid #1f2937;border-radius:16px;background:linear-gradient(180deg,#0b1227,transparent)}
+    .hero h1{margin:.2em 0 0;font-size:2rem}
+    .hero p{margin:.4em 0;color:var(--muted)}
+    .btns a{display:inline-block;margin-right:10px;padding:10px 14px;border-radius:10px;text-decoration:none;border:1px solid #223049;color:var(--text)}
+    .btns a.primary{background:var(--accent);color:#06202a;border-color:transparent}
+    h2{margin:28px 0 10px;font-size:1.2rem;color:#cbd5e1}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:16px}
+    .card h3{margin:0 0 6px;font-size:1rem}
+    .tag{display:inline-block;font-size:.75rem;color:#9ca3af;border:1px solid #334155;border-radius:999px;padding:2px 8px;margin:4px 6px 8px 0}
+    ul{padding-left:18px;margin:8px 0 0} li{margin:4px 0;color:#cbd5e1}
+    footer{margin:26px 0 0;color:#64748b;font-size:.9rem}
   </style>
 </head>
 <body>
-  <h1>Radhika Mangroliya</h1>
-  <p>📍 Chicago, IL | 📧 <a href="mailto:radhikamangroliya0@gmail.com">radhikamangroliya0@gmail.com</a> | 
-     <a href="http://linkedin.com/in/radhika-mangroliya-87aa75214">LinkedIn</a> | 
-     <a href="https://github.com/Radhikamangroliya">GitHub</a>
-  </p>
+  <div class="wrap">
+    <header>
+      <div class="name">Radhika Mangroliya</div>
+      <div class="links">
+        <a href="mailto:radhikamangroliya0@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/YOUR-LINK">LinkedIn</a>
+        <a href="https://github.com/radhikamangroliya">GitHub</a>
+        <a href="assets/resume.pdf">Resume</a>
+      </div>
+    </header>
 
-  <h2>Summary</h2>
-  <p>Computer Science graduate student at DePaul University with internship experience in Python, Data Science, and Machine Learning. Skilled in predictive modeling, data visualization, and cloud-based model integration on AWS and GCP. Actively seeking internship or entry-level opportunities in Python development, Data Science, or ML.</p>
+    <section class="hero">
+      <h1>Data Science • Machine Learning • Cloud</h1>
+      <p>CS grad student @ DePaul. Python, SQL, ML (TensorFlow/PyTorch/Sklearn), dashboards (Power BI/Tableau), and cloud (AWS/GCP). Built ML pipelines, real-time analytics, and production deployments.</p>
+      <div class="btns">
+        <a class="primary" href="#projects">View Projects</a>
+        <a href="assets/resume.pdf">Download Resume</a>
+      </div>
+    </section>
 
-  <h2>Education</h2>
-  <ul>
-    <li><b>DePaul University (Chicago, IL)</b> – Master of Science in Computer Science (Dec 2023 – Nov 2025) | GPA: 3.5/4</li>
-    <li><b>Gujarat Technological University (India)</b> – Bachelor of Engineering in Information Technology (Jun 2018 – Jun 2022) | GPA: 3.8/4</li>
-  </ul>
+    <h2 id="projects">Selected Projects</h2>
+    <div class="grid">
 
-  <h2>Technical Skills</h2>
-  <ul>
-    <li><b>Languages:</b> Python, SQL, R, C, Java</li>
-    <li><b>Technologies:</b> HTML, CSS, Pandas, NumPy, Kafka, Docker, Hadoop, Spark, MapReduce</li>
-    <li><b>Databases / Cloud:</b> AWS (S3, EC2, Lambda, SageMaker), GCP (BigQuery, Vertex AI), Azure (Azure ML), MySQL, PostgreSQL, MongoDB, Redis, Snowflake</li>
-    <li><b>AI / Machine Learning:</b> TensorFlow, PyTorch, Keras, Scikit-learn, XGBoost, SVM, Word2Vec, Neural Networks, NLP, GenAI, OpenCV</li>
-    <li><b>Tools & Visualization:</b> Git, GitHub, Postman, Tableau, Power BI, Jupyter, Linux, VS Code, PyCharm</li>
-    <li><b>Soft Skills:</b> Data-Driven Decision Making, Workflow Optimization, Technical Documentation, Effective Communication</li>
-  </ul>
+      <div class="card">
+        <h3>Hybrid Android Malware Detection</h3>
+        <div>
+          <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">SVM</span><span class="tag">AWS EC2/S3</span>
+        </div>
+        <ul>
+          <li>92% accuracy on 10k+ APKs across 5 malware families.</li>
+          <li>Deployed real-time classification pipeline on AWS EC2/S3.</li>
+        </ul>
+      </div>
 
-  <h2>Work Experience</h2>
-  <p><b>Data Science Intern | Cerebulb (Gujarat, India)</b> (Jan 2022 – Nov 2023)</p>
-  <ul>
-    <li>Standardized 10+ Python/SQL pipelines with validation checks, reducing reporting errors by 30% and saving 15 hours/week.</li>
-    <li>Enhanced KPI visibility with 6+ Tableau/Power BI dashboards and predictive models on AWS/GCP, reducing decision cycles from 3 days to 1.</li>
-    <li>Operationalized failure detection and VAR forecasting models, boosting uptime by 45% and lowering prediction error by 15%.</li>
-    <li>Performed EDA on 50k+ records and applied topic modeling to 10k+ feedback entries, raising satisfaction scores by 20%.</li>
-  </ul>
+      <div class="card">
+        <h3>WSN Intrusion Detection</h3>
+        <div>
+          <span class="tag">XGBoost</span><span class="tag">Random Forest</span><span class="tag">Sklearn</span>
+        </div>
+        <ul>
+          <li>99% detection accuracy; −18% false positives vs. baseline.</li>
+          <li>ROC/heatmaps; +22% precision/recall via tuning.</li>
+        </ul>
+      </div>
 
-  <p><b>Python Developer | BrainyBeam Technologies (Gujarat, India)</b> (Jun 2021 – Oct 2021)</p>
-  <ul>
-    <li>Improved boiler failure prediction accuracy by 25% using TensorFlow/Scikit-learn, reducing maintenance costs by 15%.</li>
-    <li>Developed Spark/Hadoop pipelines and automated SQL workflows, boosting analytics efficiency by 30% and enabling real-time insights on AWS/GCP.</li>
-  </ul>
+      <div class="card">
+        <h3>Crypto Trend Analysis</h3>
+        <div>
+          <span class="tag">Hadoop</span><span class="tag">Spark</span><span class="tag">Kafka</span><span class="tag">Power BI</span>
+        </div>
+        <ul>
+          <li>Real-time & batch pipelines; +40% processing efficiency.</li>
+          <li>Dashboards; +35% faster reporting; privacy controls (K/L-diversity).</li>
+        </ul>
+      </div>
 
-  <h2>Academic Projects</h2>
-  <p><b>Real-Time Cryptocurrency Trend Analysis</b> (CoinGecko API, Hadoop, Spark, Kafka, Power BI, Plotly)</p>
-  <ul>
-    <li>Built real-time and batch pipelines, improving processing efficiency by 40% and enabling live trend monitoring.</li>
-    <li>Designed dashboards in Power BI/Plotly that increased reporting speed by 35%, while integrating K-anonymity and L-diversity for compliance.</li>
-  </ul>
+      <div class="card">
+        <h3>Billionaires Wealth Analysis</h3>
+        <div>
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span>
+        </div>
+        <ul>
+          <li>2,500+ records analyzed; 10+ interactive dashboards.</li>
+          <li>Led 4-person team; 100% ETL consistency.</li>
+        </ul>
+      </div>
 
-  <p><b>Wireless Sensor Network (WSN) Intrusion Analysis</b> (Python, Pandas, SVM, XGBoost, Random Forest)</p>
-  <ul>
-    <li>Optimized ML models, achieving 99% detection accuracy and cutting false positives by 18% compared to baseline models.</li>
-    <li>Created ROC curves and heatmaps for pattern interpretation, improving precision/recall by 22% with RandomizedSearchCV tuning.</li>
-  </ul>
+    </div>
 
-  <p><b>Hybrid Android Malware Detection</b> (Python, SVM, XGBoost, AWS)</p>
-  <ul>
-    <li>Engineered hybrid ML model (XGBoost, SVM, Random Forest) to classify 10k+ APKs with 92% accuracy across 5 malware families.</li>
-    <li>Deployed end-to-end detection workflow on AWS EC2/S3 for scalable real-time malware detection.</li>
-  </ul>
+    <h2>Experience</h2>
+    <div class="card">
+      <h3>Data Science Intern — Cerebulb</h3>
+      <ul>
+        <li>10+ Python/SQL pipelines; −30% reporting errors; 15 hrs/week saved.</li>
+        <li>Dashboards + predictive models on AWS/GCP; decisions 3 days → 1.</li>
+        <li>Failure detection + VAR forecasting; +45% uptime; −15% error.</li>
+      </ul>
+    </div>
 
-  <p><b>Billionaires Wealth Analysis</b> (Python, SQL, Power BI)</p>
-  <ul>
-    <li>Analyzed 2,500+ records with statistical analysis and modeling to uncover wealth distribution and industry trends.</li>
-    <li>Built 10+ Power BI dashboards, accelerating reporting speed by 40% and leading a 4-member team in a 5-month Agile-Waterfall project.</li>
-  </ul>
-
+    <footer>
+      © <span id="y"></span> Radhika Mangroliya • Chicago, IL
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
+
